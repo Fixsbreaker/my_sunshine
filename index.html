@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Baby ❤️</title>
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Gochi+Hand&display=swap">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Falling Hearts Background (always visible) -->
+    <div class="hearts-background" id="heartsBackground"></div>
+
+    <!-- Password Page -->
+    <div id="passwordPage" class="password-page">
+        <div class="password-container">
+            <h1>Happy 3-rd Monthsary, what's the magic word? ❤️</h1>
+            <input type="password" id="passwordInput" placeholder="magic word here princess...">
+            <button id="enterBtn">Enter</button>
+        </div>
+    </div>
+
+    <!-- Welcome Modal (hidden initially) -->
+    <div id="welcomeModal" class="welcome-modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <h1>Hello My Love! ❤️😘</h1>
+            <p>I hope you enjoy your stay 🤗</p>
+            <button id="startBtn">Start Exploring</button>
+        </div>
+    </div>
+
+    <!-- Main Content Page (hidden initially) -->
+    <div id="mainPage" class="main-page hidden">
+        <!-- Header -->
+        <header class="main-header">
+            <h1>For My Sunshine ❤️</h1>
+            <p>A special place just for you</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="loveZone">
+                <i class="fas fa-heart"></i>
+                <span>Love Zone</span>
+            </button>
+            <button class="tab-btn" data-tab="music">
+                <i class="fas fa-music"></i>
+                <span>Music</span>
+            </button>
+            <button class="tab-btn" data-tab="gallery">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+            </button>
+            <button class="tab-btn" data-tab="notes">
+                <i class="fas fa-sticky-note"></i>
+                <span>Notes</span>
+            </button>
+            <button class="tab-btn" data-tab="spinningHeart">
+                <i class="fas fa-heart-pulse"></i>
+                <span>Spinning Heart</span>
+            </button>
+        </nav>
+
+        <!-- Tab Content Container -->
+        <div class="content-container">
+            <!-- Love Zone Tab -->
+            <div class="tab-content active" id="loveZoneTab">
+                <h2 class="love-text">I love you ❤️</h2>
+                <button class="love-btn" id="loveResponseBtn">I LOVE YOU VERY VERY MUCH(BE MY WIFE)</button>
+                
+                <!-- Letter content (hidden initially, shown after button click) -->
+                <div class="letter-content hidden" id="letterContent">
+                    <div class="letter-box">
+                        <p>Мое любимое солнышко,</p>
+                        <p>Каждый проведенный с тобой день делает меня счастливым. Твоя улыбка привносит самые яркие краски, а твой смех это моя любимая мелодия. Я создал это маленький спейс, чтобы напомнить тебе, как много ты значишь для меня.</p>
+                        <p>Ты не просто моя девушка, ты мой человек, мой напарник по приключениям и человек, с которым я хочу делиться всем. Спасибо тебе за то, что ты есть, за твою доброту, твою искренность и твоё удивительное сердце.</p>
+                        <p>Я люблю тебя больше, чем могут выразить слова, и я так благодарен за каждую секунду, проведённую вместе. Ты делаешь мою жизнь ярче, лучше и наполненной смыслом.</p>
+                        <p>С каждым днём я влюбляюсь в тебя всё больше и больше. Ты моё всё. Я тебя очень очень сильно люблю.</p>
+                        <p>Навсегда твой,<br>Твой Альнурчик ❤️</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music Tab -->
+            <div class="tab-content" id="musicTab">
+                <h2>Songs that remind me of you</h2>
+                <div class="music-list">
+                    <div class="music-item" data-song="music/they-call-this-love.mp3">
+                        <div class="song-info">
+                            <p class="song-title">They Call This Love</p>
+                            <p class="song-artist">Elliot James Reay</p>
+                        </div>
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="music-item" data-song="music/please-please-please.mp3">
+                        <div class="song-info">
+                            <p class="song-title">Please, Please, Please, Let Me Get What I Want</p>
+                            <p class="song-artist">The Smiths</p>
+                        </div>
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="music-item" data-song="music/last-night-on-earth.mp3">
+                        <div class="song-info">
+                            <p class="song-title">Last Night On Earth</p>
+                            <p class="song-artist">Green Day</p>
+                        </div>
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <audio id="musicPlayer" preload="metadata"></audio>
+            </div>
+
+            <!-- Gallery Tab -->
+            <div class="tab-content" id="galleryTab">
+                <h2>Our Precious Moments</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="photos/photo1.jpg" alt="Наше фото 1">
+                        <div class="gallery-caption">My favorite photo card</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo2.jpg" alt="Наше фото 2">
+                        <div class="gallery-caption">My gorgeous girl</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo3.jpg" alt="Наше фото 3">
+                        <div class="gallery-caption">Our first private photo</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo4.jpg" alt="Наше фото 4">
+                        <div class="gallery-caption">Beautiful memories</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo5.jpg" alt="Наше фото 5">
+                        <div class="gallery-caption">Forever in my heart</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo6.jpg" alt="Наше фото 6">
+                        <div class="gallery-caption">You and me</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo7.jpg" alt="Наше фото 7">
+                        <div class="gallery-caption">Perfect together</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo8.jpg" alt="Наше фото 8">
+                        <div class="gallery-caption">My everything</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="photos/photo9.jpg" alt="Наше фото 9">
+                        <div class="gallery-caption">Always & Forever</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Tab -->
+            <div class="tab-content" id="notesTab">
+                <h2>Random Little Notes</h2>
+                <div class="notes-list">
+                    <div class="note-item">
+                        <span class="note-icon">❤️</span>
+                        <p>Don't be sad, honey, be happy ❤️</p>
+                    </div>
+                    <div class="note-item">
+                        <span class="note-icon">❤️</span>
+                        <p>Smile everyday, you're the prettiest person I know 😊</p>
+                    </div>
+                    <div class="note-item">
+                        <span class="note-icon">❤️</span>
+                        <p>Remember to eat on time, sunshine princess 🍽️</p>
+                    </div>
+                    <div class="note-item">
+                        <span class="note-icon">❤️</span>
+                        <p>You're doing amazing, keep going! I believe in you</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spinning Heart Tab -->
+            <div class="tab-content" id="spinningHeartTab">
+                <div class="card-container">
+                    <!-- Left Column - Spinning Heart Window -->
+                    <div class="card-left">
+                        <div class="circle-window">
+                            <div class="spinning-heart" id="spinningHeart">
+                                <div class="heart-layer layer-1"></div>
+                                <div class="heart-layer layer-2"></div>
+                                <div class="heart-layer layer-3"></div>
+                                <div class="heart-layer layer-4"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Card Content -->
+                    <div class="card-right">
+                        <!-- Text Blocks -->
+                        <div class="text-blocks">
+                            <div class="text-block">My</div>
+                            <div class="text-block">Heart</div>
+                            <div class="text-block">Beats</div>
+                            <div class="text-block">For You</div>
+                        </div>
+
+                        <!-- Snoopy Image -->
+                        <!-- Replace with your Snoopy image URL -->
+                        <div class="snoopy-container">
+                            <img src="photos/snoopy.png" alt="Snoopy with heart" class="snoopy-img">
+                        </div>
+
+                        <!-- Anatomical Heart in Corner -->
+                        <div class="anatomical-heart-container">
+                            <div class="kraft-paper"></div>
+                            <!-- Replace with your anatomical heart image URL -->
+                            <img src="photos/anatomical-heart.png" alt="Anatomical heart" class="anatomical-heart">
+                        </div>
+
+                        <!-- Decorative Hand-drawn Hearts -->
+                        <div class="decorative-hearts">
+                            <div class="deco-heart" style="top: 15%; left: 10%;">❤</div>
+                            <div class="deco-heart" style="top: 25%; left: 85%;">❤</div>
+                            <div class="deco-heart" style="top: 60%; left: 5%;">❤</div>
+                            <div class="deco-heart" style="top: 75%; left: 90%;">❤</div>
+                            <div class="deco-heart" style="top: 85%; left: 15%;">❤</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>Made with all my love ❤️</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

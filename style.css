@@ -1,0 +1,958 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FFECF5; /* Light pink background */
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Falling Hearts Background Animation */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.pixel-heart {
+    position: absolute;
+    color: #F72585;
+    opacity: 0.4;
+    font-size: 24px;
+    animation: fallSlow linear infinite;
+}
+
+@keyframes fallSlow {
+    0% {
+        top: -10%;
+        opacity: 0.4;
+    }
+    100% {
+        top: 110%;
+        opacity: 0;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Password Page Styles */
+.password-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.password-container {
+    background-color: #FFFFFF;
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(247, 37, 133, 0.2);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+}
+
+.password-container h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #F72585;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 18px;
+    border: 3px solid #FFECF5;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 25px;
+    transition: border-color 0.3s;
+    font-weight: 600;
+}
+
+.password-container input:focus {
+    outline: none;
+    border-color: #F72585;
+}
+
+.password-container input::placeholder {
+    color: #FFB3D9;
+}
+
+.password-container button {
+    width: 100%;
+    padding: 18px;
+    background-color: #F72585;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.password-container button:hover {
+    background-color: #D01A6F;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(247, 37, 133, 0.4);
+}
+
+.password-container button:active {
+    transform: translateY(0);
+}
+
+/* Welcome Modal Styles */
+.welcome-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #F72585 0%, #FF5BA8 100%);
+    padding: 60px 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(247, 37, 133, 0.5);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: modalAppear 0.5s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.modal-content p {
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    margin-bottom: 35px;
+    font-weight: 600;
+}
+
+.modal-content button {
+    padding: 18px 50px;
+    background-color: #FFFFFF;
+    color: #F72585;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-content button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Main Page Styles */
+.main-page {
+    min-height: 100vh;
+    position: relative;
+    z-index: 5;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Header Styles */
+.main-header {
+    background: linear-gradient(135deg, #F72585 0%, #FF5BA8 100%);
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(247, 37, 133, 0.3);
+}
+
+.main-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tab-btn {
+    background-color: #FFB3D9;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(247, 37, 133, 0.2);
+}
+
+.tab-btn i {
+    font-size: 1.2rem;
+}
+
+.tab-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(247, 37, 133, 0.3);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #F72585 0%, #FF5BA8 100%);
+    color: #FFFFFF;
+}
+
+/* Content Container */
+.content-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 500px;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #F72585;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Love Zone Tab Styles */
+.love-text {
+    font-size: 3rem !important;
+    margin-bottom: 30px !important;
+    text-align: center;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.love-btn {
+    display: block;
+    margin: 0 auto 30px;
+    padding: 20px 50px;
+    background: linear-gradient(135deg, #F72585 0%, #FF5BA8 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+}
+
+.love-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(247, 37, 133, 0.4);
+}
+
+.letter-content {
+    animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter-box {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(247, 37, 133, 0.15);
+    line-height: 1.9;
+    color: #333;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.letter-box p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* Music List Styles */
+.music-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.music-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 30px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.1);
+    transition: all 0.3s;
+}
+
+.music-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 20px rgba(247, 37, 133, 0.2);
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-title {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.song-artist {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.play-btn {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #F72585 0%, #FF5BA8 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(247, 37, 133, 0.3);
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(247, 37, 133, 0.5);
+}
+
+.play-btn:active {
+    transform: scale(1.05);
+}
+
+/* Gallery Styles */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ровно 3 колонки для симметрии 3x3 */
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.15);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-caption {
+    background: linear-gradient(135deg, #F72585 0%, #FF5BA8 100%);
+    color: #FFFFFF;
+    padding: 12px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Notes List Styles */
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.note-item {
+    background-color: #FFFFFF;
+    padding: 25px 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.1);
+    transition: all 0.3s;
+}
+
+.note-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(247, 37, 133, 0.2);
+}
+
+.note-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.note-item p {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Footer Styles */
+.main-footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+}
+
+.main-footer p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F72585;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .password-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .modal-content h1 {
+        font-size: 2rem;
+    }
+
+    .modal-content p {
+        font-size: 1.1rem;
+    }
+
+    .main-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .main-header p {
+        font-size: 1rem;
+    }
+
+    .tab-btn span {
+        display: none;
+    }
+
+    .tab-btn {
+        padding: 12px 18px;
+    }
+
+    .tab-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .love-text {
+        font-size: 2.2rem !important;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .gallery-item img {
+        height: 180px;
+    }
+
+    .letter-box {
+        padding: 25px;
+    }
+
+    .music-item {
+        padding: 20px;
+    }
+
+    .song-title {
+        font-size: 1.1rem;
+    }
+
+    .play-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .password-container {
+        padding: 35px 25px;
+    }
+
+    .password-container h1 {
+        font-size: 1.4rem;
+    }
+
+    .modal-content {
+        padding: 40px 30px;
+    }
+
+    .modal-content h1 {
+        font-size: 1.7rem;
+    }
+
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .love-text {
+        font-size: 1.8rem !important;
+    }
+
+    .love-btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+    }
+
+    .letter-box p {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================ */
+/* SPINNING HEART TAB STYLES */
+/* ============================================ */
+
+/* Card Container - Two Column Layout */
+.card-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Left Column - White with Circle Window */
+.card-left {
+    width: 30%;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Circle Window */
+.circle-window {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #FFDDEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Spinning Heart Container */
+.spinning-heart {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin 4s linear infinite;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinning-heart:hover {
+    animation: spinFast 1s linear infinite;
+}
+
+/* Heart Layers - Beautiful Symmetric Hearts */
+.heart-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.heart-layer::before,
+.heart-layer::after {
+    content: "";
+    position: absolute;
+    width: 52%;
+    height: 85%;
+    background-color: currentColor;
+    border-radius: 50% 50% 0 0;
+    top: 0;
+}
+
+.heart-layer::before {
+    left: 50%;
+    transform: translateX(-100%) rotate(-45deg);
+    transform-origin: 100% 100%;
+}
+
+.heart-layer::after {
+    left: 50%;
+    transform: translateX(0%) rotate(45deg);
+    transform-origin: 0% 100%;
+}
+
+/* Different colors for each layer - like your image */
+.layer-1 {
+    color: #E91E63;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 1;
+}
+
+.layer-2 {
+    color: #EC407A;
+    transform: translate(-50%, -50%) scale(0.85);
+    z-index: 2;
+}
+
+.layer-3 {
+    color: #F48FB1;
+    transform: translate(-50%, -50%) scale(0.70);
+    z-index: 3;
+}
+
+.layer-4 {
+    color: #F8BBD0;
+    transform: translate(-50%, -50%) scale(0.55);
+    z-index: 4;
+}
+
+/* Spinning Animations */
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes spinFast {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Right Column - Pink Background */
+.card-right {
+    width: 70%;
+    background-color: #FFDDEE;
+    position: relative;
+    padding: 40px;
+    overflow: hidden;
+}
+
+/* Text Blocks "My Heart Beats For You" */
+.text-blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.text-block {
+    background-color: #A0522D;
+    color: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: rotate(-2deg);
+}
+
+.text-block:nth-child(2) {
+    transform: rotate(1deg);
+}
+
+.text-block:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.text-block:nth-child(4) {
+    transform: rotate(2deg);
+}
+
+/* Snoopy Container */
+.snoopy-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.snoopy-img {
+    max-width: 250px;
+    height: auto;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* Anatomical Heart in Corner */
+.anatomical-heart-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 180px;
+    height: 180px;
+}
+
+.kraft-paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #D2B48C;
+    border-radius: 10px;
+    transform: rotate(5deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Ripped edge effect */
+    clip-path: polygon(
+        0% 5%, 3% 0%, 7% 3%, 12% 1%, 15% 5%, 20% 2%, 25% 4%, 30% 1%, 
+        35% 3%, 40% 0%, 45% 4%, 50% 2%, 55% 5%, 60% 1%, 65% 4%, 70% 2%, 
+        75% 5%, 80% 3%, 85% 1%, 90% 4%, 95% 2%, 100% 5%,
+        100% 95%, 97% 100%, 93% 97%, 88% 99%, 85% 95%, 80% 98%, 75% 96%, 
+        70% 99%, 65% 97%, 60% 100%, 55% 96%, 50% 98%, 45% 95%, 40% 100%, 
+        35% 97%, 30% 99%, 25% 96%, 20% 98%, 15% 95%, 10% 99%, 5% 98%, 0% 95%
+    );
+}
+
+.anatomical-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+    z-index: 2;
+}
+
+/* Decorative Hand-drawn Hearts */
+.decorative-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.deco-heart {
+    position: absolute;
+    color: #DC143C;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    animation: float 3s ease-in-out infinite;
+}
+
+.deco-heart:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.deco-heart:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.deco-heart:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.deco-heart:nth-child(5) {
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+/* Responsive Design for Spinning Heart Tab */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 700px;
+    }
+
+    .card-left {
+        width: 100%;
+        height: 250px;
+    }
+
+    .card-right {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .text-block {
+        font-size: 1.4rem;
+        padding: 10px 15px;
+    }
+
+    .snoopy-img {
+        max-width: 180px;
+    }
+
+    .anatomical-heart-container {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .circle-window {
+        width: 160px;
+        height: 160px;
+    }
+
+    .spinning-heart {
+        width: 100px;
+        height: 100px;
+    }
+
+    .text-block {
+        font-size: 1.2rem;
+        padding: 8px 12px;
+    }
+
+    .snoopy-img {
+        max-width: 150px;
+    }
+
+    .anatomical-heart-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .deco-heart {
+        font-size: 1.2rem;
+    }
+}
