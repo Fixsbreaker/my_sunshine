@@ -1,59 +1,61 @@
-
 // Пароль для входа
-const correctPassword = 'iloveyou'; 
-
-
-
-function createFallingHearts() {
-    const heartsBackground = document.getElementById('heartsBackground');
-    const heartSymbols = ['♥', '❤', '💕', '💖'];
-    
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('pixel-heart');
-        heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDuration = (Math.random() * 8 + 10) + 's'; 
-        heart.style.fontSize = (Math.random() * 10 + 20) + 'px';
-        
-        heartsBackground.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 18000);
-    }
-    
-    setInterval(() => {
-        createHeart();
-    }, 800);
-}
-
-createFallingHearts();
-
+const correctPassword = '6';
 
 const passwordInput = document.getElementById('passwordInput');
 const enterBtn = document.getElementById('enterBtn');
 const passwordPage = document.getElementById('passwordPage');
 const welcomeModal = document.getElementById('welcomeModal');
+const startBtn = document.getElementById('startBtn');
+const mainPage = document.getElementById('mainPage');
+const letterToggle = document.getElementById('letterToggle');
+const letterContent = document.getElementById('letterContent');
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
 
-// Check password
+const state = {
+    musicPlaying: false,
+};
+
+function createMagicDust() {
+    const dustContainer = document.getElementById('magicDust');
+    const dustSymbols = ['✦', '✧', '✶', '✺'];
+
+    function createDust() {
+        const dust = document.createElement('span');
+        dust.classList.add('dust');
+        dust.textContent = dustSymbols[Math.floor(Math.random() * dustSymbols.length)];
+        dust.style.left = Math.random() * 100 + '%';
+        dust.style.animationDuration = (Math.random() * 10 + 12) + 's';
+        dust.style.fontSize = (Math.random() * 10 + 14) + 'px';
+        dust.style.opacity = (Math.random() * 0.4 + 0.3).toFixed(2);
+
+        dustContainer.appendChild(dust);
+
+        setTimeout(() => {
+            dust.remove();
+        }, 22000);
+    }
+
+    setInterval(createDust, 900);
+}
+
+createMagicDust();
+
 function checkPassword() {
     const enteredPassword = passwordInput.value.toLowerCase().trim();
-    
+
     if (enteredPassword === correctPassword) {
-        passwordPage.style.animation = 'fadeOut 0.5s';
+        passwordPage.classList.add('fade-out');
         setTimeout(() => {
             passwordPage.style.display = 'none';
             welcomeModal.classList.remove('hidden');
         }, 500);
     } else {
-        // Wrong password - show alert
-        alert('Oops! Wrong magic sentence, my sunshine ❤️');
+        alert('Неверная цифра. Попробуй еще раз ✨');
         passwordInput.value = '';
     }
 }
 
-// Event listeners for password
 enterBtn.addEventListener('click', checkPassword);
 passwordInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
@@ -61,110 +63,65 @@ passwordInput.addEventListener('keypress', (e) => {
     }
 });
 
-// ============================================
-// WELCOME MODAL FUNCTIONALITY
-// ============================================
+function startMusic() {
+    if (!bgMusic) return;
+    bgMusic.volume = 0.35;
 
-const startBtn = document.getElementById('startBtn');
-const mainPage = document.getElementById('mainPage');
+    bgMusic.play()
+        .then(() => {
+            state.musicPlaying = true;
+            musicToggle.classList.add('is-playing');
+            musicToggle.querySelector('.music-text').textContent = 'Музыка: вкл';
+        })
+        .catch(() => {
+            state.musicPlaying = false;
+            musicToggle.classList.remove('is-playing');
+            musicToggle.querySelector('.music-text').textContent = 'Музыка: выкл';
+        });
+}
 
 startBtn.addEventListener('click', () => {
-    // Hide welcome modal and show main page
-    welcomeModal.style.animation = 'fadeOut 0.5s';
+    welcomeModal.classList.add('fade-out');
     setTimeout(() => {
         welcomeModal.style.display = 'none';
         mainPage.classList.remove('hidden');
-    }, 500);
+        mainPage.classList.add('fade-in');
+        musicToggle.classList.remove('hidden');
+        startMusic();
+    }, 400);
 });
 
-// ============================================
-// TAB NAVIGATION FUNCTIONALITY
-// ============================================
+musicToggle.addEventListener('click', () => {
+    if (!bgMusic) return;
 
-const tabBtns = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-
-tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons and contents
-        tabBtns.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-        
-        // Add active class to clicked button
-        btn.classList.add('active');
-        
-        // Show corresponding content
-        const tabName = btn.getAttribute('data-tab');
-        document.getElementById(tabName + 'Tab').classList.add('active');
-    });
-});
-
-// ============================================
-// LOVE ZONE - "I LOVE YOU TOO" BUTTON
-// ============================================
-
-const loveResponseBtn = document.getElementById('loveResponseBtn');
-const letterContent = document.getElementById('letterContent');
-
-loveResponseBtn.addEventListener('click', () => {
-    // Show the letter content
-    letterContent.classList.remove('hidden');
-    // Scroll to the letter smoothly
-    setTimeout(() => {
-        letterContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-});
-
-// ============================================
-// FADE OUT ANIMATION
-// ============================================
-
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
+    if (state.musicPlaying) {
+        bgMusic.pause();
+        state.musicPlaying = false;
+        musicToggle.classList.remove('is-playing');
+        musicToggle.querySelector('.music-text').textContent = 'Музыка: выкл';
+    } else {
+        startMusic();
     }
-`;
-document.head.appendChild(style);
+});
 
-// ============================================
-// MUSIC PLAYER FUNCTIONALITY
-// ============================================
+if (letterToggle && letterContent) {
+    letterToggle.addEventListener('click', () => {
+        letterContent.classList.toggle('hidden');
+        letterToggle.textContent = letterContent.classList.contains('hidden')
+            ? 'Развернуть письмо'
+            : 'Свернуть письмо';
+    });
+}
 
-const musicPlayer = document.getElementById('musicPlayer');
-const musicItems = document.querySelectorAll('.music-item');
-let currentPlayingBtn = null;
+const scrollButtons = document.querySelectorAll('[data-scroll]');
 
-musicItems.forEach(item => {
-    const playBtn = item.querySelector('.play-btn');
-    const songPath = item.getAttribute('data-song');
-    
-    playBtn.addEventListener('click', () => {
-        // Если нажали на уже играющую песню - поставить на паузу
-        if (currentPlayingBtn === playBtn && !musicPlayer.paused) {
-            musicPlayer.pause();
-            playBtn.innerHTML = '<i class="fas fa-play"></i>';
-            currentPlayingBtn = null;
-        } else {
-            // Остановить предыдущую песню
-            if (currentPlayingBtn) {
-                currentPlayingBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-            
-            // Запустить новую песню
-            musicPlayer.src = songPath;
-            musicPlayer.play();
-            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            currentPlayingBtn = playBtn;
+scrollButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const target = button.getAttribute('data-scroll');
+        if (!target) return;
+        const element = document.querySelector(target);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
-});
-
-// Когда песня закончилась, вернуть иконку Play
-musicPlayer.addEventListener('ended', () => {
-    if (currentPlayingBtn) {
-        currentPlayingBtn.innerHTML = '<i class="fas fa-play"></i>';
-        currentPlayingBtn = null;
-    }
 });
